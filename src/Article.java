@@ -5,7 +5,7 @@ public class Article {
 	protected int reference;
 	protected String marque;
 	protected String modele;
-	protected int prixJour;
+	protected float prixJour;
 	protected int nbStock;
 	
 	//Constructeur
@@ -42,8 +42,8 @@ public class Article {
 		this.modele = modele;
 	}
 
-	public int getPrixJour() {
-		return prixJour;
+	public float getPrixJour() {
+		return this.prixJour;
 	}
 
 	public void setPrixJour(int prixJour) {
@@ -61,10 +61,10 @@ public class Article {
 	public void afficher(){
 		System.out.println(
 				"Reference : "+this.reference+
-				"Marque : "+this.marque+
-				"Modele : "+this.modele+
-				"Prix/Jour : "+this.prixJour+
-				"Nombre en stock : "+this.nbStock);
+				"\nMarque : "+this.marque+
+				"\nModele : "+this.modele+
+				"\nPrix/Jour : "+this.prixJour+
+				"\nNombre en stock : "+this.nbStock);
 	}
 	
 	public float calculLoc(int nbJour){

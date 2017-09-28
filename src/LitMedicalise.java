@@ -20,4 +20,12 @@ public class LitMedicalise extends MobilierMedical {
 		this.potence = potence;
 	}
 
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Potence : "+this.potence);
+	}
+	
+	
+
 }

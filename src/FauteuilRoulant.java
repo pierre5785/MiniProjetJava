@@ -29,6 +29,15 @@ public class FauteuilRoulant extends Article {
 	public void setPoid(float poid) {
 		this.poid = poid;
 	}
+
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Largeur d'assise : "+this.largeurAss+
+						   "\nPoids de la chaise : "+this.poid);
+	}
+	
+	
 	
 
 }

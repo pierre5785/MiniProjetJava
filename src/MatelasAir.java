@@ -39,6 +39,16 @@ public class MatelasAir extends Article {
 	public void setTempsGonfl(int tempsGonfl) {
 		this.tempsGonfl = tempsGonfl;
 	}
+
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Dimensions : "+this.dimension+
+						   "\nPoids max : "+this.poidMax+
+						   "\nTemps de gonflage : "+this.tempsGonfl);
+	}
+	
+	
 	
 
 }

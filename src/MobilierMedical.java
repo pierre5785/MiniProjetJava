@@ -30,4 +30,13 @@ public class MobilierMedical extends Article {
 		this.dimension = dimension;
 	}
 
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Poids max admissible : "+this.poidMaxAdm+
+						   "\nDimension : "+this.dimension);
+	}
+	
+	
+
 }

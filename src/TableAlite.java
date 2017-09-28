@@ -20,4 +20,12 @@ public class TableAlite extends MobilierMedical {
 		this.plateauIncli = plateauIncli;
 	}
 
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Plateau inclinable : "+this.plateauIncli);
+	}
+	
+	
+
 }

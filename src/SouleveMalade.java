@@ -12,7 +12,6 @@ public class SouleveMalade extends Article {
 		this.capaLev = capaLev;
 		this.degrePiv = degrePiv;
 	}
-
 	
 	//Accesseurs
 	public int getCapaLev() {
@@ -30,6 +29,14 @@ public class SouleveMalade extends Article {
 	public void setDegrePiv(int degrePiv) {
 		this.degrePiv = degrePiv;
 	}
+
+	@Override
+	public void afficher() {
+		super.afficher();
+		System.out.println("Capacité de levage : "+this.capaLev+
+						   "\nDegré de pivottement : "+this.degrePiv);
+	}
+	
 	
 	
 
