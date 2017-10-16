@@ -47,8 +47,7 @@ public class Client {
 		this.numeroTel = numeroTel;
 	}
 	
-	@Override
-	public String toString() {
+	public String getCoordonnesClient() {
 		return "Client [idClient=" + idClient + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
 				+ ", numeroTel=" + numeroTel + "]";
 	}

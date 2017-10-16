@@ -6,7 +6,7 @@ public class Location {
 	ArrayList<Article> listeArticles;
 	Date dateDebut;
 	Date dateFin;
-	String coordonneesClient;
+	Client client;
 	int montantFacture;
 	
 	//Acesseur
@@ -28,12 +28,7 @@ public class Location {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-	public String getCoordonneesClient() {
-		return coordonneesClient;
-	}
-	public void setCoordonneesClient(String coordonneesClient) {
-		this.coordonneesClient = coordonneesClient;
-	}
+	
 	public int getMontantFacture() {
 		return montantFacture;
 	}
@@ -41,29 +36,30 @@ public class Location {
 		this.montantFacture = montantFacture;
 	}
 	//Contructeur 
-	public Location(ArrayList<Article> listeArticles, Date dateDebut, Date dateFin, String coordonneesClient,
-			int montantFacture) {
+	public Location(ArrayList<Article> listeArticles, Date dateDebut, Date dateFin, Client c) {
 		this.listeArticles = listeArticles;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.coordonneesClient = coordonneesClient;
-		this.montantFacture = montantFacture;
+		this.client = c;
+		this.montantFacture = 0;
 	}
-	public void saveLoc(){
-		
+	
+	public long dureeLocation(){
+		long CONST_DURATION_OF_DAY = 1000l * 60 * 60 * 24; 
+		long diff = Math.abs(dateDebut.getTime() - dateFin.getTime()); 
+		long result = diff/CONST_DURATION_OF_DAY;
+		return result;
 	}
-	public void removeLoc(){
-		
+	
+	public void calculMontantAFacturer(){ 
+		for(Article a : listeArticles){
+			this.montantFacture += a.calculLoc((int) dureeLocation());
+		}
 	}
-	public void louer(){
-		
-	}
+	
 	@Override
 	public String toString() {
 		return "Location [listeArticles=" + listeArticles + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
-				+ ", coordonneesClient=" + coordonneesClient + ", montantFacture=" + montantFacture + "]";
-	}
-	public void archiverLoc(){
-		
+				+ ", coordonneesClient=" + client.getCoordonnesClient() + ", montantFacture=" + montantFacture + "]";
 	}
 }
