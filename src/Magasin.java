@@ -11,7 +11,8 @@ public class Magasin {
 	
 	private ArrayList<Article> stock = new ArrayList<Article>();
 	private ArrayList<Location> listeLoc = new ArrayList<Location>();
-	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
 	
 	public void ajoutMateriel(Article a) {
 		stock.add(a); 
@@ -19,7 +20,7 @@ public class Magasin {
 	
 	public void saveLoc(Location location){
 		this.listeLoc.add(location);
-		System.out.println("Location ajouter pour le client : " +location.client.getCoordonnesClient());
+		System.out.println("Location ajouter pour le client : " +location.getClient().getCoordonnesClient());
 	}
 	
 	public void removeLoc(File f){
@@ -34,11 +35,11 @@ public class Magasin {
 
 		for (Location loc : this.listeLoc){
 			
-			PrintWriter pw = new PrintWriter( new BufferedWriter( new FileWriter("./archiveLoc/" + format.format(loc.getDateFin()) + ".loc", true)));
-			pw.write("Coordonnées Client : " + loc.client.getCoordonnesClient());
-			pw.write("\nDate Debut : " + loc.getDateDebut());
-			pw.write("\nDate Fin : " + loc.getDateFin());
-			pw.write("\nMontant a facturer : //" + loc.montantFacture + "//");
+			PrintWriter pw = new PrintWriter( new BufferedWriter( new FileWriter("./archiveLoc/" + dateformatMY.format(loc.getDateFin()) + ".loc", true)));
+			pw.write("Coordonnées Client : " + loc.getClient().getCoordonnesClient());
+			pw.write("\nDate Debut : " + dateformat.format(loc.getDateDebut()));
+			pw.write("\nDate Fin : " + dateformat.format(loc.getDateFin()));
+			pw.write("\nMontant a facturer : " + loc.calculMontantAFacturer() + " Euros");
 			pw.write("\n\nArticle loué :");
 			
 			for (Article a : loc.getListeArticles()){
@@ -48,7 +49,7 @@ public class Magasin {
 			pw.write("\n\n--------------------------------\n\n");
 			
 			pw.close();
-			System.out.println("Archive done : " + format.format(loc.getDateFin()) + ".loc");
+			System.out.println("Archive enregistre : " + dateformatMY.format(loc.getDateFin()) + ".loc");
 		}
 	}
 	
@@ -57,8 +58,8 @@ public class Magasin {
 		for(int i = 0; i<listeLoc.size(); i++) {
 			listeLoc.get(i).calculMontantAFacturer();
 			
-			if (listeLoc.get(i).getDateDebut().compareTo(format.parse(dateDebut)) >= 0 &&
-				listeLoc.get(i).getDateFin().compareTo(format.parse(dateFin)) <= 0) 
+			if (listeLoc.get(i).getDateDebut().compareTo(dateformat.parse(dateDebut)) >= 0 &&
+				listeLoc.get(i).getDateFin().compareTo(dateformat.parse(dateFin)) <= 0) 
 				res += listeLoc.get(i).getMontantFacture();
 		}
 		System.out.println("La recette comprise entre " + dateDebut + " et " + dateFin + " est de : " + res);
@@ -87,13 +88,42 @@ public class Magasin {
 		}
 	}
 	
+	public void afficheEnsLocClient(Client client){
+		for (Location loc : this.listeLoc){
+			if (loc.getClient()==client)
+				System.out.println(loc);
+			
+			
+		}
+	}
+	
 
-	public static void main(String[] args) {
-		Article a = new Article(1234, "bleu", "ts-34", 34, 45);
-		TableAlite ta = new TableAlite(0, null, null, 0, 0, 0, null, false);
+	public static void main(String[] args) throws ParseException, IOException {
+		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy"); 
+		
 		Magasin m = new Magasin();
-		m.ajoutMateriel(a);
+		Client cl = new Client(1, "Dupont", "Jean", "5 rue des roses Nantes", 0210121314);
+		TableAlite ta = new TableAlite(2585, "AlitTable", "TA-190", 10, 4, 150, "190x90x65", false);
+		MatelasAir ma = new MatelasAir(2369, "MatAir", "MA-85", 5, 3, "192x90x20", 150, 2);
+		
+		m.ajoutMateriel(ta);
+		m.ajoutMateriel(ma);
 		m.afficheEnsArticle(2);
+		
+		
+		Location l1 = new Location(date.parse("10-10-2017"),date.parse("13-10-2017"),cl);
+		l1.ajoutArticle(ta);
+		
+		Location l2 = new Location(date.parse("15-10-2017"),date.parse("18-10-2017"),cl);
+		l2.ajoutArticle(ma);
+		
+		m.saveLoc(l1);
+		m.saveLoc(l2);
+		m.archiveLoc();
+		
+		m.calculRecette("10-10-2017", "13-10-2017");
+		
+		m.afficheEnsLocClient(cl);
 
 	}
 

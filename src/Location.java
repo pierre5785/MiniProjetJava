@@ -3,12 +3,21 @@ import java.util.Date;
 
 public class Location {
 		
-	ArrayList<Article> listeArticles;
-	Date dateDebut;
-	Date dateFin;
-	Client client;
-	int montantFacture;
+	private ArrayList<Article> listeArticles;
+	private Date dateDebut;
+	private Date dateFin;
+	private Client client;
+	private double montantFacture;
 	
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public void setMontantFacture(double montantFacture) {
+		this.montantFacture = montantFacture;
+	}
 	//Acesseur
 	public ArrayList<Article> getListeArticles() {
 		return listeArticles;
@@ -29,19 +38,23 @@ public class Location {
 		this.dateFin = dateFin;
 	}
 	
-	public int getMontantFacture() {
+	public double getMontantFacture() {
 		return montantFacture;
 	}
 	public void setMontantFacture(int montantFacture) {
 		this.montantFacture = montantFacture;
 	}
 	//Contructeur 
-	public Location(ArrayList<Article> listeArticles, Date dateDebut, Date dateFin, Client c) {
-		this.listeArticles = listeArticles;
+	public Location(Date dateDebut, Date dateFin, Client c) {
+		this.listeArticles = new ArrayList<Article>();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.client = c;
 		this.montantFacture = 0;
+	}
+	
+	public void ajoutArticle(Article a) {
+		this.listeArticles.add(a); 
 	}
 	
 	public long dureeLocation(){
@@ -51,10 +64,11 @@ public class Location {
 		return result;
 	}
 	
-	public void calculMontantAFacturer(){ 
+	public double calculMontantAFacturer(){ 
 		for(Article a : listeArticles){
 			this.montantFacture += a.calculLoc((int) dureeLocation());
 		}
+		return this.getMontantFacture();
 	}
 	
 	@Override
