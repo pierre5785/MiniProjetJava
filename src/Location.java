@@ -73,7 +73,11 @@ public class Location {
 	
 	@Override
 	public String toString() {
-		return "Location [listeArticles=" + listeArticles + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
-				+ ", coordonneesClient=" + client.getCoordonnesClient() + ", montantFacture=" + montantFacture + "]";
+		return "Location"+ 
+				"\n listeArticles=" + listeArticles + 
+				"\n dateDebut=" + dateDebut + 
+				"\n dateFin=" + dateFin +
+				"\n coordonneesClient=" + client.getCoordonnesClient() + 
+				"\n montantFacture=" + montantFacture + "]";
 	}
 }

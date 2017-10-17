@@ -48,8 +48,8 @@ public class Client {
 	}
 	
 	public String getCoordonnesClient() {
-		return "Client [idClient=" + idClient + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
-				+ ", numeroTel=" + numeroTel + "]";
+		return "idClient : " + idClient + ", nom : " + nom + ", prenom : " + prenom + ", adresse : " + adresse
+				+ ", numeroTel : " + numeroTel;
 	}
 	
 	

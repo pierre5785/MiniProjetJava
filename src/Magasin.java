@@ -56,11 +56,11 @@ public class Magasin {
 	public void calculRecette(String dateDebut, String dateFin) throws ParseException{
 		double res = 0.0;
 		for(int i = 0; i<listeLoc.size(); i++) {
-			listeLoc.get(i).calculMontantAFacturer();
+			//listeLoc.get(i).calculMontantAFacturer();
 			
 			if (listeLoc.get(i).getDateDebut().compareTo(dateformat.parse(dateDebut)) >= 0 &&
 				listeLoc.get(i).getDateFin().compareTo(dateformat.parse(dateFin)) <= 0) 
-				res += listeLoc.get(i).getMontantFacture();
+				res += listeLoc.get(i).calculMontantAFacturer();
 		}
 		System.out.println("La recette comprise entre " + dateDebut + " et " + dateFin + " est de : " + res);
 	}
@@ -89,11 +89,9 @@ public class Magasin {
 	}
 	
 	public void afficheEnsLocClient(Client client){
-		for (Location loc : this.listeLoc){
-			if (loc.getClient()==client)
-				System.out.println(loc);
-			
-			
+		for (int i=0; i<listeLoc.size();i++){
+			if (listeLoc.get(i).getClient()==client)
+				System.out.println(listeLoc.get(i).toString());	
 		}
 	}
 	
