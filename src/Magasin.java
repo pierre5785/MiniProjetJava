@@ -14,21 +14,25 @@ public class Magasin {
 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
 	
+	//methode qui ajoute un article a la liste du stock du magasin
 	public void ajoutMateriel(Article a) {
 		stock.add(a); 
 	}
 	
+	//methode qui ajoute une location a la liste de location du magasin
 	public void saveLoc(Location location){
 		this.listeLoc.add(location);
 		System.out.println("Location ajouter pour le client : " +location.getClient().getCoordonnesClient());
 	}
 	
+	//methode qui supprime un fichier d'archive de location
 	public void removeLoc(File f){
 		for (File c : f.listFiles()){
 			c.delete();
 		}
 	}
 	
+	//methode qui archive dans un fichier .loc les locations 
 	public void archiveLoc() throws IOException{
 		new File("./archiveLoc/").mkdir();
 		removeLoc(new File("./archiveLoc"));
@@ -65,21 +69,21 @@ public class Magasin {
 		System.out.println("La recette comprise entre " + dateDebut + " et " + dateFin + " est de : " + res);
 	}
 	
-	public void afficheEnsArticle(int ref_mar_mod_ppj){
+	public void afficheEnsArticle(int choix){
 		
-		if (ref_mar_mod_ppj == 1){
+		if (choix == 1){
 			for(Article a : stock){
 				System.out.println("Reference de l'article : " + a.getReference());
 			}
-		} else if (ref_mar_mod_ppj == 2){
+		} else if (choix == 2){
 			for(Article a : stock){
 				System.out.println("Marque de l'article : " + a.getMarque());
 			}
-		} else if (ref_mar_mod_ppj == 3){
+		} else if (choix == 3){
 			for(Article a : stock){
 				System.out.println("Modele de l'article : " + a.getModele());
 			}
-		} else if (ref_mar_mod_ppj == 4){
+		} else if (choix == 4){
 			for(Article a : stock){
 				System.out.println("Prix par jour de location de l'article : " + a.getPrixJour());
 			}
@@ -88,6 +92,7 @@ public class Magasin {
 		}
 	}
 	
+	//methode qui affiche les locations que le client passe en parametre a effectue 
 	public void afficheEnsLocClient(Client client){
 		for (int i=0; i<listeLoc.size();i++){
 			if (listeLoc.get(i).getClient()==client)

@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,7 +9,9 @@ public class Location {
 	private Date dateFin;
 	private Client client;
 	private double montantFacture;
+	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	
+	//Acesseur
 	public Client getClient() {
 		return client;
 	}
@@ -18,7 +21,7 @@ public class Location {
 	public void setMontantFacture(double montantFacture) {
 		this.montantFacture = montantFacture;
 	}
-	//Acesseur
+	
 	public ArrayList<Article> getListeArticles() {
 		return listeArticles;
 	}
@@ -53,10 +56,12 @@ public class Location {
 		this.montantFacture = 0;
 	}
 	
+	//methode qui ajoute un article a la liste d'article de la location
 	public void ajoutArticle(Article a) {
 		this.listeArticles.add(a); 
 	}
 	
+	//methode qui convertie la date de debut et de fin pour retourner le nombre de jour
 	public long dureeLocation(){
 		long CONST_DURATION_OF_DAY = 1000l * 60 * 60 * 24; 
 		long diff = Math.abs(dateDebut.getTime() - dateFin.getTime()); 
@@ -64,6 +69,7 @@ public class Location {
 		return result;
 	}
 	
+	//calcul du montant total a facturer pour la location courante 
 	public double calculMontantAFacturer(){ 
 		for(Article a : listeArticles){
 			this.montantFacture += a.calculLoc((int) dureeLocation());
@@ -74,10 +80,10 @@ public class Location {
 	@Override
 	public String toString() {
 		return "Location"+ 
-				"\n listeArticles=" + listeArticles + 
-				"\n dateDebut=" + dateDebut + 
-				"\n dateFin=" + dateFin +
-				"\n coordonneesClient=" + client.getCoordonnesClient() + 
-				"\n montantFacture=" + montantFacture + "]";
+				"\n listeArticles: " + listeArticles + 
+				"\n dateDebut: " + dateformat.format(dateDebut) + 
+				"\n dateFin: " + dateformat.format(dateFin) +
+				"\n coordonneesClient:  " + client.getCoordonnesClient() + 
+				"\n montantFacture: " + montantFacture + "]";
 	}
 }

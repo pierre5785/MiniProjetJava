@@ -67,6 +67,7 @@ public class Article {
 				"\nNombre en stock : "+this.nbStock);
 	}
 	
+	//methode qui calcule le prix de la location de l'article en fonction du nombre de jour 
 	public float calculLoc(int nbJour){
 		return this.prixJour*nbJour;
 	}
