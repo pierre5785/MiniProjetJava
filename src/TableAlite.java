@@ -1,4 +1,9 @@
-
+/**
+ * Classe TableAlite
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class TableAlite extends MobilierMedical {
 	
 	//Attributs

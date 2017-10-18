@@ -1,4 +1,9 @@
-
+/**
+ * Classe Article
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class Article {
 	
 	//Attributs

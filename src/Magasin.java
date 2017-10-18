@@ -6,7 +6,12 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+/**
+ * Classe Magasin
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class Magasin {
 	
 	private ArrayList<Article> stock = new ArrayList<Article>();

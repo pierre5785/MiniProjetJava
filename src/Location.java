@@ -1,7 +1,12 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
+/**
+ * Classe Location
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class Location {
 		
 	private ArrayList<Article> listeArticles;

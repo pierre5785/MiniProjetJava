@@ -1,4 +1,9 @@
-
+/**
+ * Classe Client
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class Client {
 	
 	int idClient;

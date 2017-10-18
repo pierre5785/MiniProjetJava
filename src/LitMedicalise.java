@@ -1,4 +1,9 @@
-
+/**
+ * Classe LitMedicalise
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class LitMedicalise extends MobilierMedical {
 	
 	//Attributs

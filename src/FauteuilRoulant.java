@@ -1,4 +1,9 @@
-
+/**
+ * Classe FauteuilRoulant
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class FauteuilRoulant extends Article {
 	
 	//Attributs

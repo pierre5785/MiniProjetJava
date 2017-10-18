@@ -1,4 +1,9 @@
-
+/**
+ * Classe MobilierMedical
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class MobilierMedical extends Article {
 	
 	//Attributs

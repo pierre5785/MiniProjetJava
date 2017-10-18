@@ -1,4 +1,9 @@
-
+/**
+ * Classe SouleveMalade
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class SouleveMalade extends Article {
 	
 	//Attributs

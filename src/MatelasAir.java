@@ -1,4 +1,9 @@
-
+/**
+ * Classe MatelasAir
+ * 
+ * @author Thibault Beillevaire, Pierre Biermann
+ * @version 1.0
+ */
 public class MatelasAir extends Article {
 	
 	//Attributs
