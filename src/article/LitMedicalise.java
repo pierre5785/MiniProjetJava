@@ -1,3 +1,4 @@
+package article;
 /**
  * Classe LitMedicalise
  * 

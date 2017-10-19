@@ -1,6 +1,10 @@
+package gestion;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import article.Article;
+import client.Client;
 /**
  * Classe Location
  * 
@@ -13,7 +17,6 @@ public class Location {
 	private Date dateDebut;
 	private Date dateFin;
 	private Client client;
-	private double montantFacture;
 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	
 	//Acesseur
@@ -23,10 +26,6 @@ public class Location {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	public void setMontantFacture(double montantFacture) {
-		this.montantFacture = montantFacture;
-	}
-	
 	public ArrayList<Article> getListeArticles() {
 		return listeArticles;
 	}
@@ -46,19 +45,12 @@ public class Location {
 		this.dateFin = dateFin;
 	}
 	
-	public double getMontantFacture() {
-		return montantFacture;
-	}
-	public void setMontantFacture(int montantFacture) {
-		this.montantFacture = montantFacture;
-	}
 	//Contructeur 
 	public Location(Date dateDebut, Date dateFin, Client c) {
 		this.listeArticles = new ArrayList<Article>();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.client = c;
-		this.montantFacture = 0;
 	}
 	
 	//methode qui ajoute un article a la liste d'article de la location
@@ -75,20 +67,20 @@ public class Location {
 	}
 	
 	//calcul du montant total a facturer pour la location courante 
-	public double calculMontantAFacturer(){ 
+	public double calculMontantAFacturer(){
+		double total = 0;
 		for(Article a : listeArticles){
-			this.montantFacture += a.calculLoc((int) dureeLocation());
+			total += a.calculLoc((int) dureeLocation());
 		}
-		return this.getMontantFacture();
+		return total;
 	}
 	
-	@Override
-	public String toString() {
+	public String afficheLocation() {
 		return "Location"+ 
 				"\n listeArticles: " + listeArticles + 
 				"\n dateDebut: " + dateformat.format(dateDebut) + 
 				"\n dateFin: " + dateformat.format(dateFin) +
 				"\n coordonneesClient:  " + client.getCoordonnesClient() + 
-				"\n montantFacture: " + montantFacture + "]";
+				"\n montantFacture: " + this.calculMontantAFacturer();
 	}
 }
