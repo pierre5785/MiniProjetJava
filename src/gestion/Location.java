@@ -20,32 +20,71 @@ public class Location {
 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	
 	//Acesseur
+	/**
+	 * Getter de l'attribut this.client
+	 * @return this.client
+	 */
 	public Client getClient() {
 		return client;
 	}
+	/**
+	 * Setter de l'attribut this.client
+	 * @param client
+	 */
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	/**
+	 * Getter de l'attribut this.listeArticles
+	 * @return this.listeArticles
+	 */
 	public ArrayList<Article> getListeArticles() {
-		return listeArticles;
+		return this.listeArticles;
 	}
+	/**
+	 * Setter de l'attribut this.listeArticles
+	 * @param listeArticles
+	 */
 	public void setListeArticles(ArrayList<Article> listeArticles) {
 		this.listeArticles = listeArticles;
 	}
+	/**
+	 * Getter de l'attribut this.dateDebut
+	 * @return this.dateDebut
+	 */
 	public Date getDateDebut() {
 		return dateDebut;
 	}
+	/**
+	 * Setter de l'attribut this.dateDebut
+	 * @param dateDebut
+	 */
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
+	/**
+	 * Getter de l'attribut this.dateFin
+	 * @return this.dateFin
+	 */
 	public Date getDateFin() {
 		return dateFin;
 	}
+	/**
+	 * Setter de l'attribut this.dateFin
+	 * @param dateFin
+	 */
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-	
-	//Contructeur 
+	 
+	/**
+	 * Constructeur
+	 * @param dateDebut
+	 * @param dateFin
+	 * @param c
+	 * 
+	 * Construit une nouvelle location
+	 */
 	public Location(Date dateDebut, Date dateFin, Client c) {
 		this.listeArticles = new ArrayList<Article>();
 		this.dateDebut = dateDebut;
@@ -53,12 +92,18 @@ public class Location {
 		this.client = c;
 	}
 	
-	//methode qui ajoute un article a la liste d'article de la location
+	/**
+	 * ajoute un article à la liste d'article de la location
+	 * @param a article a ajouter a la liste
+	 */
 	public void ajoutArticle(Article a) {
 		this.listeArticles.add(a); 
 	}
 	
-	//methode qui convertie la date de debut et de fin pour retourner le nombre de jour
+	/**
+	 * convertie la date de début et de fin pour retourner le nombre de jour
+	 * @return durée de la location en jour
+	 */
 	public long dureeLocation(){
 		long CONST_DURATION_OF_DAY = 1000l * 60 * 60 * 24; 
 		long diff = Math.abs(dateDebut.getTime() - dateFin.getTime()); 
@@ -66,7 +111,11 @@ public class Location {
 		return result;
 	}
 	
-	//calcul du montant total a facturer pour la location courante 
+	
+	/**
+	 * calcul du montant total à facturer pour la location courante
+	 * @return montant total de la location
+	 */
 	public double calculMontantAFacturer(){
 		double total = 0;
 		for(Article a : listeArticles){
@@ -75,6 +124,11 @@ public class Location {
 		return total;
 	}
 	
+	/**
+	 * affiche les informations de la location (liste des article, date début et fin, cordonnées client) 
+	 * et le montant de la facture  
+	 * @return string qui contient toutes les informations de la location 
+	 */
 	public String afficheLocation() {
 		return "Location"+ 
 				"\n listeArticles: " + listeArticles + 

@@ -25,20 +25,29 @@ public class Magasin {
 	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
 	
-	//methode qui ajoute un article a la liste du stock du magasin
+	/**
+	 * ajoute un article à la liste du stock du magasin
+	 * @param a article à ajouter au stock du magasin
+	 */
 	public void ajoutMateriel(Article a) {
 		
 		stock.add(a); 
 	}
 	
-	//methode qui ajoute une location a la liste de location du magasin
+	/**
+	 * ajoute une location à la liste de location du magasin
+	 * @param location location a ajouter à la liste 
+	 */
 	public void saveLoc(Location location){
 		
 		this.listeLoc.add(location);
 		System.out.println("Location ajouter pour le client : " +location.getClient().getCoordonnesClient());
 	}
 	
-	//methode qui supprime un fichier d'archive de location
+	/**
+	 * supprime un fichier d'archive de location
+	 * @param f fichier de sauvegarde de type .loc
+	 */
 	public void removeLoc(File f){
 		
 		for (File c : f.listFiles()){
@@ -46,7 +55,10 @@ public class Magasin {
 		}
 	}
 	
-	//methode qui archive dans un fichier .loc les locations 
+	/**
+	 * archive dans un fichier .loc les locations
+	 * @throws IOException
+	 */
 	public void archiveLoc() throws IOException{
 		
 		new File("./archiveLoc/").mkdir();
@@ -69,6 +81,12 @@ public class Magasin {
 		}
 	}
 	
+	/**
+	 * calcule la recette du magasin sur une période donnée
+	 * @param dateDebut date début de période
+	 * @param dateFin date fin de période
+	 * @throws ParseException
+	 */
 	public void calculRecette(String dateDebut, String dateFin) throws ParseException{
 		
 		double res = 0.0;
@@ -81,6 +99,12 @@ public class Magasin {
 		System.out.println("La recette comprise entre " + dateDebut + " et " + dateFin + " est de : " + res + " euros");
 	}
 	
+	/**
+	 * affiche l'ensemble des articles dans le stock du magasin
+	 * il faut entrer en paramètre si l'on veut les afficher par référence ou par marque ou par modele
+	 * ou par prix au jour
+	 * @param choix int entre 1 et 4
+	 */
 	public void afficheEnsArticle(int choix){
 		
 		switch(choix) {
@@ -109,7 +133,10 @@ public class Magasin {
 			}
 	}
 	
-	//methode qui affiche les locations que le client passe en parametre a effectue 
+	/**
+	 * affiche les locations que le client passé en paramètre a effectué
+	 * @param client client pour lequel on veut afficher ses locations
+	 */
 	public void afficheEnsLocClient(Client client){
 		
 		for (int i=0; i<listeLoc.size();i++){
