@@ -1,4 +1,4 @@
-package gestion;
+package app;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -9,9 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import article.Article;
-import article.MatelasAir;
-import article.TableAlite;
-import client.Client;
 /**
  * Classe Magasin
  * 
@@ -22,9 +19,25 @@ public class Magasin {
 	
 	private ArrayList<Article> stock = new ArrayList<Article>();
 	private ArrayList<Location> listeLoc = new ArrayList<Location>();
-	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
-	SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
+	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	private SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
 	
+	public ArrayList<Article> getStock() {
+		return stock;
+	}
+
+	public void setStock(ArrayList<Article> stock) {
+		this.stock = stock;
+	}
+
+	public ArrayList<Location> getListeLoc() {
+		return listeLoc;
+	}
+
+	public void setListeLoc(ArrayList<Location> listeLoc) {
+		this.listeLoc = listeLoc;
+	}
+
 	/**
 	 * ajoute un article à la liste du stock du magasin
 	 * @param a article à ajouter au stock du magasin
@@ -137,42 +150,13 @@ public class Magasin {
 	 * affiche les locations que le client passé en paramètre a effectué
 	 * @param client client pour lequel on veut afficher ses locations
 	 */
-	public void afficheEnsLocClient(Client client){
-		
+	public void afficheEnsLocClient(String nom, String prenom){
 		for (int i=0; i<listeLoc.size();i++){
-			if (listeLoc.get(i).getClient()==client)
+			if (listeLoc.get(i).getClient().getNom().equals(nom) && listeLoc.get(i).getClient().getPrenom().equals(prenom)) {
 				System.out.println(listeLoc.get(i).afficheLocation());	
+			}else {
+				System.out.println("Saisie incorrect le client n'existe pas");
+			}
 		}
 	}
-	
-	/*
-	public static void main(String[] args) throws ParseException, IOException {
-		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy"); 
-		
-		Magasin m = new Magasin();
-		Client cl = new Client(1, "Dupont", "Jean", "5 rue des roses Nantes", 0210121314);
-		TableAlite ta = new TableAlite(2585, "AlitTable", "TA-190", 10, 4, 150, "190x90x65", false);
-		MatelasAir ma = new MatelasAir(2369, "MatAir", "MA-85", 5, 3, "192x90x20", 150, 2);
-		
-		m.ajoutMateriel(ta);
-		m.ajoutMateriel(ma);
-		m.afficheEnsArticle(2);
-		
-		
-		Location l1 = new Location(date.parse("10-10-2017"),date.parse("13-10-2017"),cl);
-		l1.ajoutArticle(ta);
-		
-		Location l2 = new Location(date.parse("15-10-2017"),date.parse("18-10-2017"),cl);
-		l2.ajoutArticle(ma);
-		
-		m.saveLoc(l1);
-		m.saveLoc(l2);
-		//m.archiveLoc();
-		
-		m.calculRecette("10-10-2017", "18-10-2017");
-		
-		m.afficheEnsLocClient(cl);
-
-	}
-	*/
 }

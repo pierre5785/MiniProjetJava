@@ -1,4 +1,4 @@
-package gestion;
+package app;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Location {
 	private Date dateDebut;
 	private Date dateFin;
 	private Client client;
-	SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	
 	//Acesseur
 	/**
