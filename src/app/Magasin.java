@@ -22,18 +22,34 @@ public class Magasin {
 	private SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
 	private SimpleDateFormat dateformatMY = new SimpleDateFormat("MM-yyyy");
 	
+	/**
+	 * Getter this.stock
+	 * @return this.stock
+	 */
 	public ArrayList<Article> getStock() {
 		return stock;
 	}
-
+	
+	/**
+	 * Setter this.stock
+	 * @param stock
+	 */
 	public void setStock(ArrayList<Article> stock) {
 		this.stock = stock;
 	}
 
+	/**
+	 * Getter this.listeLoc
+	 * @return this.listeLoc
+	 */
 	public ArrayList<Location> getListeLoc() {
 		return listeLoc;
 	}
-
+	
+	/**
+	 * Setter this.listeLoc
+	 * @param listeLoc
+	 */
 	public void setListeLoc(ArrayList<Location> listeLoc) {
 		this.listeLoc = listeLoc;
 	}
@@ -149,14 +165,13 @@ public class Magasin {
 	
 	/**
 	 * affiche les locations que le client passé en paramètre a effectué
-	 * @param client client pour lequel on veut afficher ses locations
+	 * @param nom nom du client pour lequel on veut afficher ses locations
+	 * @param prenom prenom du client pour lequel on veut afficher ses locations
 	 */
 	public void afficheEnsLocClient(String nom, String prenom){
 		for (int i=0; i<listeLoc.size();i++){
 			if (listeLoc.get(i).getClient().getNom().equals(nom) && listeLoc.get(i).getClient().getPrenom().equals(prenom)) {
 				System.out.println(listeLoc.get(i).afficheLocation());	
-			}else {
-				//System.out.println("Saisie incorrect le client n'existe pas");
 			}
 		}
 	}
