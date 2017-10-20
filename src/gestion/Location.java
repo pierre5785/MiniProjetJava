@@ -1,4 +1,5 @@
 package gestion;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,13 +83,14 @@ public class Location {
 	 * @param dateDebut
 	 * @param dateFin
 	 * @param c
+	 * @throws ParseException
 	 * 
 	 * Construit une nouvelle location
 	 */
-	public Location(Date dateDebut, Date dateFin, Client c) {
+	public Location(String dateDebut, String dateFin, Client c) throws ParseException {
 		this.listeArticles = new ArrayList<Article>();
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
+		this.dateDebut = dateformat.parse(dateDebut);
+		this.dateFin = dateformat.parse(dateFin);
 		this.client = c;
 	}
 	

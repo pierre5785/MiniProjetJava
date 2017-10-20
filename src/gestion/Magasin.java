@@ -145,7 +145,7 @@ public class Magasin {
 		}
 	}
 	
-
+	/*
 	public static void main(String[] args) throws ParseException, IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy"); 
 		
@@ -174,5 +174,5 @@ public class Magasin {
 		m.afficheEnsLocClient(cl);
 
 	}
-
+	*/
 }
