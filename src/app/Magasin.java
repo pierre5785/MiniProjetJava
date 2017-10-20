@@ -140,6 +140,7 @@ public class Magasin {
 				for(Article a : stock){
 					System.out.println("Prix par jour de location de l'article : " + a.getPrixJour());
 				}
+				break;
 			default: 
 				System.out.println("Valeur souhaite non correcte ! \n Veuillez relancer la commande.");
 				break;
@@ -155,7 +156,7 @@ public class Magasin {
 			if (listeLoc.get(i).getClient().getNom().equals(nom) && listeLoc.get(i).getClient().getPrenom().equals(prenom)) {
 				System.out.println(listeLoc.get(i).afficheLocation());	
 			}else {
-				System.out.println("Saisie incorrect le client n'existe pas");
+				//System.out.println("Saisie incorrect le client n'existe pas");
 			}
 		}
 	}

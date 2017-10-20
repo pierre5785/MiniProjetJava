@@ -19,6 +19,7 @@ import client.Client;
 
 public class Vendeur {
 	
+	//méthode qui permet d'éffacer la console
 	public static void clearScreen(){
         for(int clear = 0; clear < 1000; clear++) {
             System.out.println("\n") ;
@@ -88,7 +89,7 @@ public class Vendeur {
             int choix= sc.nextInt();
             if(choix < 1 || choix > 7 ){
                 clearScreen();
-                System.out.println("Erreur de choix !");
+                System.out.println("Vous vous êtes trompé");
             }
             switch(choix){
                 case 1:
@@ -150,21 +151,34 @@ public class Vendeur {
                     
                 case 6:
                 		clearScreen();
-                    System.out.println("Lancement du cas de test");
-                    m.afficheEnsArticle(1);
-                    System.out.println("\n");
-                    m.saveLoc(loc1);
+                		//sauvegarde des locations
+                		m.saveLoc(loc1);
                     m.saveLoc(loc2);
                     m.saveLoc(loc3);
                     System.out.println("\n");
-                    m.afficheEnsLocClient(c1.getNom(), c1.getPrenom());
+                    //affichage des article par références 
+                    m.afficheEnsArticle(1);
                     System.out.println("\n");
-                    m.afficheEnsLocClient(c2.getNom(), c2.getPrenom());
+                    //affichage des article par marque 
+                    m.afficheEnsArticle(2);
                     System.out.println("\n");
-                    m.afficheEnsLocClient(c3.getNom(), c3.getPrenom());
+                    //affichage des article par modele 
+                    m.afficheEnsArticle(3);
                     System.out.println("\n");
+                    //affichage des article par prix 
+                    m.afficheEnsArticle(4);
+                    System.out.println("\n");
+                    //affichage des locations effectué par chaque client
+                    m.afficheEnsLocClient("Dupont", "Jean");
+                    System.out.println("\n");
+                    m.afficheEnsLocClient("Delagare", "Patrick");
+                    System.out.println("\n");
+                    m.afficheEnsLocClient("Courte", "Jason");
+                    System.out.println("\n");
+                    //archivage des locations
                     m.archiveLoc();
                     System.out.println("\n");
+                    //calcul de la rectte en le 10 et 19 octobre 2017
                     m.calculRecette("10-10-2017", "19-10-2017");
                     break;
                     
